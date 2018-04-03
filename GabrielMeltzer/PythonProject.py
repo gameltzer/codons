@@ -209,6 +209,7 @@ if (fileOutputPath != ''):
     fileInputPath and fileExtension are passed from the while loop above after having been
     determined to be valid input.
     """
+    record_iterator = SeqIO.parse(fileInputPath, fileExtension, IUPAC.ambiguous_dna)
     processFile(record_iterator, output_file)
     ### This closes the output file    
     output_file.close()
