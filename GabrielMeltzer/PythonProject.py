@@ -130,7 +130,7 @@ def processFile(iterator,output):
         """ Since the RNA is the same as the DNA with the exception of one nucleotide, getting an amino acid
         count from the RNA should be the same as the amino acid count from the DNA.
         """
-        output.write("\n\nThis is the amino acid count of the protein sequnence derived from the RNA resulting from "
+        output.write("\n\nThis is the amino acid count of the protein sequence derived from the RNA resulting from "
         "the DNA sequence in the file. It should be the same as the previous amino acid count: \n\n")
         rnaAcidCountDictionary = formatAminoAcids(analyzed_RNAsequence.count_amino_acids())
 
@@ -143,7 +143,7 @@ def processFile(iterator,output):
 while True:
     try:
     # this gets input from the Python interpreter... We can then pass this to SeqIo to read it into Biopython
-        fileInputPath = input("Enter FASTA or FASTQ file to read. If this request was a mistake, " 
+        fileInputPath = raw_input("Enter FASTA or FASTQ file to read. If this request was a mistake, " 
         "press enter with no other input. Otherwise, enter a file containing DNA sequences: \n")
         if fileInputPath == '':
             """This should make it easier to run in Anaconda so that we don't have to keep 
@@ -179,7 +179,7 @@ if (fileInputPath != ''):
     while True:
         try:
             # This allows us to specify where we are outputting the file to. 
-            fileOutputPath = input('Write the path of the file you want to output the information to!'
+            fileOutputPath = raw_input('Write the path of the file you want to output the information to!'
                                    " If this was a mistake, presss enter. Otherwise, provide the file path: \n'")
 
             if fileOutputPath == '':
@@ -191,7 +191,7 @@ if (fileInputPath != ''):
             else:
                 output_file = open(fileOutputPath,'a') 
                 break
-        except FileNotFoundError:
+        except IOError:
             print(fileOutputPath + "is not a valid file path. Try again")
 ### We should stil define fileOutputPath even if we don't have an input path to prevent errors.
 else:
